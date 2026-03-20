@@ -1,0 +1,73 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables/variables" as v; // Використовуємо аліас v для безпеки
+
+.header {
+  width: 100%;
+  border-bottom: 2px solid black;
+  // background-color: v.$header-bg; // Тепер звертаємось через аліас
+
+  &__nav {
+    @include page-padding-inline; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    min-height: 64px;
+  }
+
+  &__logo {
+    @include page-standart-font(900);
+    text-decoration: none;
+    color: inherit;
+    font-size: 30px;
+    display: flex; // Щоб лого і іконка (якщо буде поруч) стояли рівно
+    align-items: center;
+  }
+}
+
+.nav {
+  &__links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+
+  &__dropdown {
+    position: relative;
+    // ВИДАЛЕНО :hover логіку, працюємо через .submenu--active
+  }
+}
+
+.dropdown {
+  &__item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px;
+    cursor: pointer; // Обов'язково для клікабельних елементів
+    user-select: none;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Рекомендую винести це в окремий файл _hero.scss
+.hero {
+  &__icon {
+    display: inline-block; 
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    user-select: none;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-style: normal; // Щоб емодзі не став курсивом від батьківських тегів
+
+    &:hover {
+      transform: scale(2); 
+    }
+  }
+}
