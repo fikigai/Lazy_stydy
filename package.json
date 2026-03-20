@@ -1,0 +1,39 @@
+{
+  "name": "lazy_stydy",
+  "version": "1.0.0",
+  "description": "implementing tasks",
+  "keywords": [
+    "testing",
+    "mongodb",
+    "automation"
+  ],
+  "homepage": "https://github.com/fikigai/Lazy_stydy#readme",
+  "bugs": {
+    "url": "https://github.com/fikigai/Lazy_stydy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fikigai/Lazy_stydy.git"
+  },
+  "license": "ISC",
+  "author": "bunchak_oleh",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel ./src/index.html --open",
+    "build": "parcel build --public-url=/dist/",
+    "test": "jest",
+    "server": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "jest": "^30.3.0",
+    "nodemon": "^3.1.14",
+    "parcel": "^2.12.0",
+    "supertest": "^7.2.2"
+  }
+}
