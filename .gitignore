@@ -137,3 +137,10 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# trash
+node_modules/
+dist/
+.parcel-cache/
+.env
+coverage/

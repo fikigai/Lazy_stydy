@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,17 +12,112 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/styles.scss" />
+    <script src="index.js" defer></script>
   </head>
-  <body>
-    <header class="header">
-      <nav class="navbar">
-        <div class="logo">Lazy <span>Implement</span></div>
-        <ul class="nav-menu">
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link">Семестр 6 ▾</a>
+  <body class="page__body body">
+    <header class="page__header header">
+      <nav class="header__nav nav">
+        <div class="header__logo logo">Lazy <div class="hero__icon">🦥</div></div>
+
+        <ul class="nav__links">
+          <li class="nav__dropdown dropdown">
+            <a href="#" class="dropdown__item">Навчання ▾</a>
+
             <ul class="submenu">
-              <li><a href="#">Якість ПЗ та тестування</a></li>
-              <li><a href="#">Інший предмет</a></li>
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 1 ▸</a>
+                <ul class="submenu-nested">
+                  <li>
+                    <a href="#" class="submenu-nested__link">Архів предметів</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 2 ▸</a>
+                <ul class="submenu-nested">
+                  <li>
+                    <a href="#" class="submenu-nested__link">Архів предметів</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 3 ▸</a>
+                <ul class="submenu-nested">
+                  <li>
+                    <a href="#" class="submenu-nested__link">Архів предметів</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 4 ▸</a>
+                <ul class="submenu-nested">
+                  <li>
+                    <a href="#" class="submenu-nested__link">Архів предметів</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 5 ▸</a>
+                <ul class="submenu-nested">
+                  <li>
+                    <a href="#" class="submenu-nested__link">Архів предметів</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="submenu__item dropdown-inner">
+                <a href="#" class="submenu__link">Семестр 6 ▸</a>
+                <ul class="submenu-nested">
+                  <li>
+                    <a href="#qa" class="submenu-nested__link"
+                      >Якість ПЗ та тестування</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#modeling" class="submenu-nested__link"
+                      >Моделювання та аналіз ПЗ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#os" class="submenu-nested__link"
+                      >Операційні системи</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#web-programming" class="submenu-nested__link"
+                      >Програмування для інтернет</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#social-movements" class="submenu-nested__link"
+                      >Громадські рухи</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#evi-prep" class="submenu-nested__link"
+                      >Підготовка до ЄВІ</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#practice" class="submenu-nested__link"
+                      >Технологічна практика</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 7 ▸</a>
+                <ul class="submenu-nested">
+                  <li><a href="#" class="submenu-nested__link">План навчання</a></li>
+                </ul>
+              </li>
+              <li class="submenu__item">
+                <a href="#" class="submenu__link">Семестр 8 ▸</a>
+                <ul class="submenu-nested">
+                  <li><a href="#" class="submenu-nested__link">Дипломне проектування</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
@@ -29,7 +125,7 @@
     </header>
 
     <main class="container">
-      <h1>Вітаємо у Lazy Implement 🦥</h1>
+      <h1>Вітаємо у Lazy Implement <div class="hero__icon">🦥</div></h1>
       <p>Оберіть предмет у меню вище, щоб переглянути виконані завдання.</p>
     </main>
   </body>
