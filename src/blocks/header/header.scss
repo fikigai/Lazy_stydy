@@ -7,9 +7,9 @@
   // background-color: v.$header-bg; // Тепер звертаємось через аліас
 
   &__nav {
-    @include page-padding-inline; 
+    @include page-padding-inline;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     min-height: 64px;
   }
@@ -21,6 +21,11 @@
     font-size: 30px;
     display: flex; // Щоб лого і іконка (якщо буде поруч) стояли рівно
     align-items: center;
+    width: auto;
+    &-link {
+      color: black;
+      text-decoration: none;
+    }
   }
 }
 
@@ -58,16 +63,16 @@
 // Рекомендую винести це в окремий файл _hero.scss
 .hero {
   &__icon {
-    display: inline-block; 
+    display: inline-block;
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     user-select: none;
     margin-left: 10px;
     vertical-align: middle;
     font-style: normal; // Щоб емодзі не став курсивом від батьківських тегів
 
     &:hover {
-      transform: scale(2); 
+      transform: scale(2);
     }
   }
 }

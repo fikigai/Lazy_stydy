@@ -20,7 +20,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "parcel ./src/index.html --open",
-    "build": "parcel build src/index.html --public-url ./",
+    "build": "parcel build src/*.html --public-url ./",
     "test": "jest",
     "server": "nodemon src/server.js"
   },
