@@ -4,12 +4,13 @@ on:
   push:
     branches: [main, develop]
   pull_request:
-    branches: [main]
+    types: [opened, edited, reopened, synchronize]
+    branches: [main, develop]
 
 jobs:
+  # Твій існуючий етап білду
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +25,49 @@ jobs:
       - name: Run Build
         run: npm run build
         env:
-          # Передаємо змінні з секретів у середовище GitHub Runner
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           NODE_ENV: production
           PORT: 1234
+
+  # Новий етап для Лабораторної №6
+  analysis:
+    runs-on: ubuntu-latest
+    needs: build # Запускається тільки якщо build пройшов успішно
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1. Перевірка код-рев'ю (Завдання 2)
+      - name: Перевірка наявності схваленого код-рев’ю
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            const approved = reviews.some(review => review.state === 'APPROVED');
+            if (!approved) {
+              core.setFailed("❌ Код-рев’ю не схвалено! Потрібен статус APPROVED для злиття в develop.");
+            }
+
+      # 2. Збір метрик (Завдання 3a)
+      - name: Count lines of code with Cloc
+        run: |
+          sudo apt-get install -y cloc
+          cloc src/ > cloc-report.txt
+          cat cloc-report.txt
+
+      # 3. Статичний аналіз SonarQube (Завдання 3c)
+      - name: Run SonarQube analysis
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      # 4. Перевірка змін у гілці (Завдання 5g)
+      - name: Перевірка змін у гілці develop
+        run: |
+          git fetch origin develop
+          git log origin/develop --oneline -n 5 > develop_changes.txt
+          cat develop_changes.txt
