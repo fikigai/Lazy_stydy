@@ -4,14 +4,16 @@ on:
   push:
     branches: [main, develop]
   pull_request:
-    branches: [main]
+    types: [opened, edited, reopened, synchronize]
+    branches: [main, develop]
 
 jobs:
+  # Завдання 1: Базовий білд
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,3 +25,51 @@ jobs:
 
       - name: Run Build
         run: npm run build
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+
+  # Завдання 2, 3, 4, 5: Аналіз якості
+  analysis:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. Перевірка код-рев'ю (Завдання 2)
+      - name: Перевірка наявності схваленого код-рев’ю
+        uses: actions/github-script@v6
+        with:
+          script: |
+            if (!context.payload.pull_request) {
+              console.log("✅ Це прямий пуш, пропускаємо перевірку рев'ю.");
+              return;
+            }
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            const approved = reviews.some(review => review.state === 'APPROVED');
+            if (!approved) {
+              core.setFailed("❌ Код-рев’ю не схвалено! Потрібен статус APPROVED.");
+            }
+
+      # 2. Збір метрик (Завдання 3a)
+      - name: Count lines of code with Cloc
+        run: |
+          sudo apt-get install -y cloc
+          cloc src/ > cloc-report.txt
+          cat cloc-report.txt
+
+      # 3. Статичний аналіз (Завдання 3c/4 - ESLint замість Sonar)
+      - name: Run ESLint (Static Analysis)
+        run: |
+          npx eslint src/ --format stylish || echo "Лінтер знайшов зауваження, але білд продовжується для звіту"
+
+      # 4. Перевірка змін у гілці develop (Завдання 5g)
+      - name: Перевірка змін у гілці develop
+        run: |
+          git fetch origin develop
+          git log origin/develop --oneline -n 5 > develop_changes.txt || echo "Гілка develop порожня або відсутня"
+          cat develop_changes.txt
