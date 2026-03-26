@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="styles/images/favicon.png"
+      type="image/x-icon"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,30 +17,86 @@
     />
     <link rel="stylesheet" href="styles/styles.scss" />
     <script src="index.js" defer></script>
-    <script src="/src/components/header.js" defer></script>
+    <script src="./components/header.js" defer></script>
+    <script src="./components/todo.js" type="module"></script>
   </head>
-  <body class="page__body body">
+  <body class="page__body">
     <div id="header-container"></div>
-    <main class="container">
+    <main class="page__main">
       <h1>
         Якість ПЗ та тестування
         <div class="hero__icon">🧪</div>
       </h1>
-
-      <div class="grid">
-        <div class="card grid__item--6">
-          <h2>Domain Model</h2>
-          <p>
-            Опис сутностей <strong>User</strong> та <strong>Task</strong> для
-            тестування.
-          </p>
-          <div class="status-badge status-badge--green">Active</div>
-        </div>
-
-        <div class="card grid__item--6">
-          <h2>Статичний аналіз</h2>
-          <p>Звіти SonarQube та складність коду (Maintainability).</p>
-          <div class="status-badge status-badge--yellow">In Progress</div>
+      <div class="container">
+        <div class="todo__app">
+          <section class="main__section main__section--form form">
+            <h2 class="form__title">Додати завдання</h2>
+            <form class="form__body">
+              <div class="form__group">
+                <label class="form__label" for="task">Назва</label>
+                <input class="form__input form_item" type="text" id="task" />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="desc">Опис</label>
+                <textarea class="form__textarea form_item" id="desc"></textarea>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="priority">Пріоритет</label>
+                <select class="form__select form_item" id="priority">
+                  <option value="Low">Низький</option>
+                  <option value="Medium" selected>Середній</option>
+                  <option value="High">Високий</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="date">Дедлайн</label>
+                <input class="form__input form_item" type="date" id="date" />
+              </div>
+              <button class="form__button form_item">Додати</button>
+            </form>
+          </section>
+          <!-- Tasks -->
+          <section class="main__section main__section--tasks tasks">
+            <h2 class="tasks__title">Список завдань</h2>
+            <div class="filters__buttons">
+              <button class="filters__button filters__button--active">
+                Всі
+              </button>
+              <button class="filters__button">Активні</button>
+              <button class="filters__button">Виконані</button>
+            </div>
+            <div class="sort-controls"></div>
+            <ul class="tasks__list">
+              <li class="tasks__item task">
+                <input class="task__checkbox" type="checkbox" />
+                <div class="task__content">
+                  <h3 class="task__title">Зробити лабораторну</h3>
+                  <p class="task__description">JS завдання</p>
+                  <span class="task__meta">Високий | 2026-03-25</span>
+                </div>
+                <div class="task__actions">
+                  <button class="task__button">Редагувати</button>
+                  <button class="task__button task__button--danger">
+                    Видалити
+                  </button>
+                </div>
+              </li>
+              <li class="tasks__item task task--completed">
+                <input class="task__checkbox" type="checkbox" checked />
+                <div class="task__content">
+                  <h3 class="task__title">Вивчити Git</h3>
+                  <p class="task__description">Основи</p>
+                  <span class="task__meta">Середній</span>
+                </div>
+                <div class="task__actions">
+                  <button class="task__button">Редагувати</button>
+                  <button class="task__button task__button--danger">
+                    Видалити
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </main>

@@ -1,8 +1,11 @@
-@mixin page-standart-font($weight: 400) {
+@use "./variables/variables" as *;
+
+@mixin page-standart-font($weight: 400, $size: 18px) {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: $weight;
   line-height: 140%;
+  color: $text-primary;
 }
 
 @mixin mobile {
@@ -11,28 +14,29 @@
   }
 }
 
-@mixin tablet {
+@mixin onTablet {
   @media (min-width: 768px) and (max-width: 1023px) {
     @content;
   }
 }
 
-@mixin desktop {
+@mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
   }
 }
 
-
 @mixin page-padding-inline {
-  padding-inline: 20px; 
+  padding-inline: 20px;
+  
 
-  @include tablet {
+  @include onTablet {
     padding-inline: 40px;
   }
 
-  @include desktop {
+  @include onDesktop {
     max-width: 1200px;
+    margin: 0 auto;
     padding-inline: 80px;
   }
 }
@@ -45,12 +49,12 @@
   grid-template-columns: repeat(2, 1fr);
 
   // Планшет: 6 колонок
-  @include tablet {
+  @include onTablet {
     grid-template-columns: repeat(6, 1fr);
   }
 
   // Комп'ютер: 12 колонок
-  @include desktop {
+  @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
   }
 }

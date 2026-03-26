@@ -1,24 +1,25 @@
-// @use '../utils/variables/variables' as *;
-@use '../utils/mixins' as *;
+@use "./utils/variables/variables" as *;
+@use "./utils/mixins" as *;
 
-@use '../blocks/header/header';
-@use '../blocks/header/header__nav-submenu';
+@use "./blocks/page";
+@use "./blocks/header/header";
+@use "./blocks/header/header__nav-submenu";
+
+@use "./blocks/todo/todo";
 
 .page {
   box-sizing: border-box;
 
   &__body {
     margin: 0;
-    @include page-standart-font();
     min-height: 100vh;
   }
 }
 
 .container {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 20px;
+  @include page-padding-inline;
   text-align: center;
+  width: 100%;
 
   h1 {
     font-size: 32px;
