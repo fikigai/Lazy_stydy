@@ -41,14 +41,23 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            // Перевіряємо, чи ми взагалі в контексті Pull Request
+            if (!context.payload.pull_request) {
+              console.log("⚠️ Це не Pull Request. Пропускаємо перевірку рев'ю.");
+              return;
+            }
+
             const { data: reviews } = await github.rest.pulls.listReviews({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number,
             });
+
             const approved = reviews.some(review => review.state === 'APPROVED');
+
+            // Якщо ми в PR, але немає статусу APPROVED — валимо білд
             if (!approved) {
-              core.setFailed("❌ Код-рев’ю не схвалено! Потрібен статус APPROVED для злиття в develop.");
+              core.setFailed("❌ Код-рев’ю не схвалено! Потрібен статус APPROVED для злиття.");
             }
 
       # 2. Збір метрик (Завдання 3a)
