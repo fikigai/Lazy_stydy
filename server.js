@@ -18,6 +18,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
+
+
 // ============================================
 // Middleware
 // ============================================
@@ -28,15 +30,25 @@ app.use(cors());
 // Database Connection
 // ============================================
 const connectDB = async () => {
+  // 1. Перевіряємо наявність змінної ПЕРЕД підключенням
+  if (!process.env.MONGODB_URI) {
+    console.warn("⚠️ MONGODB_URI не знайдено в .env файлі. Перевір налаштування!");
+    // Можна або вийти, або просто повернути керування, якщо база не критична
+    return; 
+  }
+
   try {
-    await mongoose.connect(MONGODB_URI);
+    // 2. Якщо змінна є, пробуємо підключитися
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("✅ База підключена!");
   } catch (err) {
     console.error("❌ Помилка бази:", err.message);
-    process.exit(1);
+    // Для CI/CD краще не "класти" процес відразу, якщо це просто білд фронтенду
+    if (process.env.NODE_ENV !== 'production') {
+       process.exit(1);
+    }
   }
 };
-
 // ============================================
 // Routes
 // ============================================
