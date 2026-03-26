@@ -1,6 +1,0 @@
-@import "../utils/mixins";
-
-.container {
-  @include page-padding-inline;
-  width: 100%; // Гарантуємо, що він займає всю ширину до max-width 
-}

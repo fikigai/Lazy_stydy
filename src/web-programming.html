@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="styles/images/favicon.png"
+      type="image/x-icon"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,16 +17,53 @@
     />
     <link rel="stylesheet" href="styles/styles.scss" />
     <script src="index.js" defer></script>
-    <script src="/src/components/header.js" defer></script>
+    <script src="./components/header.js" defer></script>
   </head>
   <body class="page__body body">
     <div id="header-container"></div>
     <main class="container">
-      <h1>
-        Вітаємо у Lazy Implement
-        <div class="hero__icon">🦥</div>
-      </h1>
-      <p>Оберіть предмет у меню вище, щоб переглянути виконані завдання.</p>
+      <section class="intro">
+        <h1>Ласкаво просимо</h1>
+        <p>
+          Це навчальний проєкт, створений для практики веб-розробки. Тут зібрані
+          різні теми, лабораторні та матеріали для навчання.
+        </p>
+      </section>
+
+      <section class="courses">
+        <h2>Курси</h2>
+        <ul>
+          <li>Якість програмного забезпечення</li>
+          <li>Програмування для інтернету</li>
+          <li>Операційні системи</li>
+          <li>Моделювання та аналіз ПЗ</li>
+        </ul>
+      </section>
+
+      <section class="info">
+        <h2>Корисна інформація</h2>
+        <p>
+          Регулярна практика допомагає краще засвоювати матеріал. Рекомендується
+          виконувати всі завдання самостійно.
+        </p>
+      </section>
+
+      <section class="cards">
+        <div class="card">
+          <h3>Проєкти</h3>
+          <p>Практичні завдання та міні-проєкти для закріплення знань.</p>
+        </div>
+
+        <div class="card">
+          <h3>Теорія</h3>
+          <p>Короткі пояснення основних концепцій.</p>
+        </div>
+
+        <div class="card">
+          <h3>Практика</h3>
+          <p>Вправи для розвитку навичок програмування.</p>
+        </div>
+      </section>
     </main>
   </body>
 </html>

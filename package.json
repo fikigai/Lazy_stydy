@@ -22,11 +22,16 @@
     "start": "parcel ./src/index.html --open",
     "build": "parcel build src/*.html --public-url ./",
     "test": "jest",
-    "server": "nodemon src/server.js"
+    "dev": "concurrently \"npm run start\" \"npm run server\"",
+    "server": "node server.js",
+    "clean": "rm -rf .parcel-cache dist"
   },
   "dependencies": {
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "mongodb": "^7.1.0",
     "mongoose": "^9.3.1"
   },
   "devDependencies": {

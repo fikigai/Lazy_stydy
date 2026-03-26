@@ -1,0 +1,89 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables/variables" as *;
+
+.header {
+  width: 100%;
+  background-color: $bg-secondary; // Використовуємо твій темний фон
+  border-bottom: 1px solid $border; // Тонка лінія замість грубої чорної
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  &__nav {
+    @include page-padding-inline;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+  }
+
+  &__logo {
+    @include page-standart-font(900);
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    
+    &-link {
+      color: $text-primary;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-secondary; // Підсвічуємо золотим при наведенні
+      }
+    }
+  }
+}
+
+.nav {
+  &__links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; // Збільшили гап для кращої читабельності
+  }
+
+  &__dropdown {
+    position: relative;
+  }
+}
+
+.dropdown {
+  &__item {
+    @include page-standart-font(500);
+    color: $text-secondary;
+    text-decoration: none;
+    display: block;
+    padding: 10px 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $text-primary;
+      opacity: 1; // Замість зміни opacity, краще міняти колір тексту
+    }
+
+    // Стиль для активного посилання (з JS)
+    &--active {
+      color: $accent-secondary;
+    }
+  }
+}
+
+.hero {
+  &__icon {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-style: normal;
+
+    &:hover {
+      transform: scale(1.5) rotate(10deg); // Додав легкий поворот для ігрового ефекту
+    }
+  }
+}

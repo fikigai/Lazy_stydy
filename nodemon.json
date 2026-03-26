@@ -1,0 +1,6 @@
+{
+  "watch": ["src/server"],
+  "ext": "js,json",
+  "ignore": ["dist/*", ".parcel-cache/*", "src/styles/*", "src/components/*"],
+  "exec": "node"
+}

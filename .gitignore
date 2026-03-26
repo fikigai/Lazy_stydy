@@ -144,3 +144,5 @@ dist/
 .parcel-cache/
 .env
 coverage/
+dist/
+src/styles/images/page-background.png
