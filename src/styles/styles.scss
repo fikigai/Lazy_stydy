@@ -1,6 +1,7 @@
 @use "./utils/variables/variables" as *;
 @use "./utils/mixins" as *;
 
+@use "./blocks/container.scss";
 @use "./blocks/page";
 @use "./blocks/header/header";
 @use "./blocks/header/header__nav-submenu";
@@ -15,15 +16,3 @@
     min-height: 100vh;
   }
 }
-
-.container {
-  @include page-padding-inline;
-  text-align: center;
-  width: 100%;
-
-  h1 {
-    font-size: 32px;
-    font-weight: 900;
-  }
-}
-
