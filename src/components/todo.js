@@ -518,3 +518,5 @@ if (document.readyState === "loading") {
   loadTasks();
   initSorting();
 }
+
+// recheck merge
