@@ -375,33 +375,41 @@ const toggleTaskStatus = async (id, target, taskItem) => {
 
 /**
  * Update task title UI
+ *
+ *
  */
-const updateTitleUI = async (res, id, titleEl) => {
-  if (res?.ok) {
-    const data = await res.json();
-    const task = allTasks.find((t) => t._id === id);
-    if (task) task.title = data.title;
-    updateView();
-  }
-};
+tasksList.addEventListener("click", (e) => {
+  const taskItem = e.target.closest(".tasks__item");
+  if (!taskItem) return;
 
-/**
- * Edit task title
- */
+  const id = taskItem.dataset.id;
+
+  if (e.target.classList.contains("task__button")) {
+    editTask(id, taskItem);
+  }
+});
 const editTask = async (id, taskItem) => {
   const titleEl = taskItem.querySelector(".task__title");
   const currentTitle = titleEl.textContent;
+
   const newTitle = prompt("Нова назва:", currentTitle)?.trim();
 
   if (!newTitle || newTitle === currentTitle) return;
 
-  const res = await fetch(`${API_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title: newTitle }),
-  }).catch((err) => console.error("Помилка:", err));
+  try {
+    const res = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: newTitle }),
+    });
 
-  updateTitleUI(res, id, titleEl);
+    if (res.ok) {
+      const data = await res.json();
+      titleEl.textContent = data.title; // миттєве оновлення
+    }
+  } catch (err) {
+    console.error("Помилка:", err);
+  }
 };
 
 // ============================================
