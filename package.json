@@ -27,7 +27,6 @@
     "clean": "rm -rf .parcel-cache dist"
   },
   "dependencies": {
-    "concurrently": "^9.2.1",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
@@ -36,9 +35,10 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
+    "concurrently": "^9.2.1",
     "jest": "^30.3.0",
     "nodemon": "^3.1.14",
-    "parcel": "^2.12.0",
+    "parcel": "^2.16.4",
     "supertest": "^7.2.2"
   }
 }
