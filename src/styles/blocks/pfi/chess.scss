@@ -1,0 +1,197 @@
+@use "../../utils/variables/variables" as *;
+
+.chess-game {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $bg-primary;
+  border-radius: 25px;
+  border: 1px solid $border;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 800;
+    color: $text-primary;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    background-color: $accent-primary;
+    color: $bg-primary;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-color: $accent-primary-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba($accent-primary, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__status {
+    font-size: 18px;
+    color: $accent-secondary;
+    font-weight: 700;
+    background-color: $bg-tertiary;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid $border;
+  }
+}
+
+.chess-board {
+  $board-size: 480px;
+  $cell-size: calc(#{$board-size} / 8);
+
+  display: grid;
+  grid-template-columns: repeat(8, $cell-size);
+  grid-template-rows: repeat(8, $cell-size);
+
+  width: $board-size;
+  height: $board-size;
+  border: 4px solid $border;
+  position: relative;
+  user-select: none;
+  background-color: $bg-tertiary;
+
+  &__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative; // Важливо для позиціонування підсвітки
+    transition: background-color 0.2s ease;
+
+    &--light {
+      background-color: #ebecd0; // Більш "шаховий" кремовий
+    }
+    &--dark {
+      background-color: #779556; // Класичний шаховий зелений
+    }
+
+    // Підсвічування можливого ходу (крапка по центру)
+    &.valid-move {
+      &::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: rgba($bg-primary, 0.2);
+        border-radius: 50%;
+        z-index: 2;
+      }
+
+      // Якщо на клітинці ворог — робимо кільце навколо
+      &:has(.chess-board__piece)::after {
+        width: 90%;
+        height: 90%;
+        background-color: transparent;
+        border: 4px solid rgba($bg-primary, 0.1);
+        border-radius: 50%;
+      }
+    }
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    &.hovered {
+      background-color: rgba($accent-primary, 0.6) !important;
+    }
+  }
+
+  &__piece {
+    font-size: 48px;
+    transition: transform 0.2s ease;
+    cursor: grab;
+    z-index: 10;
+    position: relative;
+
+    &--white {
+      color: #fff;
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+    }
+    &--black {
+      color: #000;
+      // Легкий білий контур, щоб фігури було видно на темних клітинках
+      filter: drop-shadow(0 0 1px #fff)
+        drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+    }
+
+    &.dragging {
+      opacity: 0; // При перетягуванні оригінал краще сховати
+    }
+  }
+
+  &__coord {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 800;
+    color: $text-muted;
+    pointer-events: none;
+    text-transform: uppercase;
+
+    &--v {
+      left: -22px;
+      height: $cell-size;
+      display: flex;
+      align-items: center;
+    }
+
+    &--h {
+      bottom: -22px;
+      width: $cell-size;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .chess-board {
+    $board-size-mobile: 320px;
+    $cell-size-mobile: calc(#{$board-size-mobile} / 8);
+
+    width: $board-size-mobile;
+    height: $board-size-mobile;
+    grid-template-columns: repeat(8, $cell-size-mobile);
+    grid-template-rows: repeat(8, $cell-size-mobile);
+  }
+
+  .chess-board__piece {
+    font-size: 32px;
+  }
+
+  .chess-game__title {
+    font-size: 20px;
+  }
+}

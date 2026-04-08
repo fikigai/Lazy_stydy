@@ -8,11 +8,11 @@
 
 @use "./blocks/todo/todo";
 
-.page {
-  box-sizing: border-box;
-
-  &__body {
-    margin: 0;
-    min-height: 100vh;
-  }
-}
+@use "./blocks/pfi/google-search";
+@use "./blocks/pfi/portfolio";
+@use "./blocks/pfi/chess";
+@use "./blocks/pfi/schedule";
+@use "./blocks/pfi/booking";
+@use "./blocks/pfi/survey";
+@use "./blocks/pfi/lists";
+@use "./blocks/pfi/calendar";

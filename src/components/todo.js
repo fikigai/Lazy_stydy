@@ -10,7 +10,8 @@
 // ============================================
 // API Configuration
 // ============================================
-const API_URL = "http://localhost:3000/api/todos";
+// Заміни localhost на свій IP (який ми знайшли через ipconfig)
+const API_URL = "http://192.168.0.132:3000/api/todos";
 
 const LIMITS = {
   MAX_TITLE_LENGTH: 100,

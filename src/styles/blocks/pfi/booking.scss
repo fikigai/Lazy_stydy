@@ -1,0 +1,162 @@
+@use "../../utils/variables/variables" as *;
+
+.booking {
+  background-color: $bg-primary;
+  padding: 40px 20px;
+  color: $text-primary;
+  font-family: "Segoe UI", sans-serif;
+
+  &__container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: $bg-secondary;
+    padding: 35px;
+    border-radius: 25px;
+    border: 1px solid $border;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__images {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid $border;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.1);
+        border-color: $accent-primary;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: 14px;
+  }
+
+  &__group {
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    span {
+      color: $danger;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 15px;
+    &--three > * {
+      flex: 1;
+    }
+    &--compact > * {
+      flex: 1;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: $bg-tertiary;
+    border: 1px solid $border;
+    border-radius: 8px;
+    color: $text-primary;
+    outline: none;
+    font-size: 14px;
+
+    &:focus {
+      border-color: $accent-primary;
+      background-color: $bg-tertiary;
+    }
+  }
+
+  small {
+    color: $text-muted;
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  &__radio-group,
+  &__checkbox-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__radio,
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    input {
+      accent-color: $accent-primary;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    background-color: $accent-primary;
+    color: $bg-primary;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $accent-primary-hover;
+      box-shadow: 0 5px 15px rgba($accent-primary, 0.3);
+    }
+  }
+}
+
+// Адаптація для мобільних
+@media (max-width: 480px) {
+  .booking__row {
+    flex-direction: column;
+  }
+  .booking__container {
+    padding: 20px;
+  }
+}
