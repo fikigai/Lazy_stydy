@@ -1,0 +1,199 @@
+@use "../../utils/variables/variables" as *;
+
+.portfolio-widget * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.portfolio-widget {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  max-width: 850px;
+  margin: 40px 0;
+  padding: 30px;
+  width: 100%;
+  border: 1px solid $border; /* Тонка темна рамка */
+  border-radius: 25px;
+  background-color: $bg-secondary;
+  color: $text-primary;
+}
+
+/* ХЕДЕР */
+.portfolio-widget__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $border;
+  margin-bottom: 25px;
+}
+
+.portfolio-widget__profile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.portfolio-widget__avatar {
+  width: 140px;
+  height: 140px;
+  border: 2px solid $accent-primary;
+  border-radius: 20px; /* Трохи закруглений квадрат */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.portfolio-widget__name {
+  font-size: 32px;
+  font-weight: 800;
+  color: $text-primary;
+  margin-bottom: 4px;
+}
+
+.portfolio-widget__status {
+  font-size: 16px;
+  color: $accent-primary; /* Зелений акцент для статусу */
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* КНОПКИ */
+.portfolio-widget__links {
+  display: flex;
+  gap: 12px;
+}
+
+.portfolio-widget__link {
+  text-decoration: none;
+  color: $text-primary;
+  font-weight: bold;
+  border: 1px solid $border;
+  background-color: $bg-tertiary;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.portfolio-widget__link:hover {
+  background-color: $accent-primary;
+  border-color: $accent-primary;
+  color: $bg-primary;
+}
+
+/* КОНТЕНТ */
+.portfolio-widget__label {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: $accent-secondary; /* Золотистий колір для заголовків секцій */
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-widget__description {
+  color: $text-secondary;
+  line-height: 1.6;
+}
+
+/* СІТКА СКІЛІВ */
+.portfolio-widget__skills-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.portfolio-widget__skill-card {
+  flex: 1;
+  border: 1px solid $border;
+  background-color: $surface-elevated;
+  padding: 20px;
+  border-radius: 15px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.portfolio-widget__skill-card:hover {
+  border-color: $accent-primary;
+  background-color: $surface-hover;
+}
+
+.portfolio-widget__skill-title {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: $text-primary;
+  border-bottom: 2px solid $accent-primary;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.portfolio-widget__list {
+  list-style: none;
+  color: $text-secondary;
+}
+
+.portfolio-widget__list li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.portfolio-widget__list li::before {
+  content: "▹ ";
+  color: $accent-primary;
+  font-weight: bold;
+}
+
+/* ТЕГИ ROADMAP */
+.portfolio-widget__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.portfolio-widget__tag {
+  border: 1px solid $accent-primary;
+  color: $accent-primary;
+  background: rgba(29, 185, 84, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ФУТЕР */
+.portfolio-widget__footer {
+  margin-top: 40px;
+  border-top: 1px solid $border;
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  color: $text-muted;
+}
+
+/* Мобільна адаптація */
+@media (max-width: 650px) {
+  .portfolio-widget__header,
+  .portfolio-widget__profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .portfolio-widget__profile * {
+    text-align: center;
+  }
+
+  .portfolio-widget__skills-grid {
+    flex-direction: column;
+  }
+
+  .portfolio-widget__links {
+    justify-content: center;
+  }
+}

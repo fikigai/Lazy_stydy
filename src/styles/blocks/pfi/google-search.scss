@@ -1,0 +1,224 @@
+// Змінні кольорів (Dark Theme Google)
+$bg-color: #202124;
+$text-color: #ffffff;
+$header-link-color: rgba(255, 255, 255, 0.87);
+$border-color: #5f6368;
+$input-bg: #202124;
+$input-hover-bg: #303134;
+$button-bg: #303134;
+$button-text: #e8eaed;
+$icon-color: #9aa0a6;
+
+.googlepage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  // background-color: $bg-color;
+  color: $text-color;
+  font-family: arial, sans-serif;
+
+  // --- Header ---
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 6px 16px;
+    height: 60px;
+    box-sizing: border-box;
+
+    .header {
+      &__nav {
+        margin-right: 15px;
+      }
+
+      &__menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+
+        &-item {
+          margin-left: 15px;
+        }
+      }
+
+      &__link {
+        color: $header-link-color;
+        text-decoration: none;
+        font-size: 13px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &__controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      &__apps-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        svg {
+          fill: $text-color;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  // --- Profile Block ---
+  .profile {
+    &__avatar-container {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  // --- Main Content ---
+  &__main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6vh; // Відступ зверху для лого
+  }
+
+  // --- Logo ---
+  .logo {
+    
+    margin-bottom: 20px;
+
+    &__svg {
+      max-width: 272px;
+      height: auto;
+
+      path {
+        fill: $text-color;
+      }
+    }
+  }
+
+  // --- Search Form ---
+  .search-widget {
+    width: 100%;
+    min-width: 320px;
+    max-width: 736px;
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      background-color: #4d5156; // Колір самого бару
+      height: 48px;
+      border-radius: 25px;
+      padding: 0 8px;
+      transition: background-color 0.2s;
+
+      &:focus-within {
+        background-color: #5f6368;
+      }
+    }
+
+    &__input-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &__input {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #e8eaed;
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      outline: none;
+      resize: none;
+      padding: 12px 0;
+      height: 48px;
+      box-sizing: border-box;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &::placeholder {
+        color: #9aa0a6;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &__button {
+      background: none;
+      border: none;
+      padding: 0 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transition: opacity 0.2s;
+
+      &:active {
+        opacity: 0.6;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: #bdc1c6; // Колір іконок за замовчуванням
+      }
+
+      &--submit {
+        padding-left: 12px;
+      }
+
+      &--voice {
+        svg {
+          fill: #bdc1c6;
+        }
+      }
+
+      &--lens {
+        svg {
+          fill: #bdc1c6;
+        }
+      }
+
+      &--clear {
+        padding: 0 8px;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

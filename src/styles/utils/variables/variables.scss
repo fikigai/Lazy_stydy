@@ -1,33 +1,26 @@
-$bg-primary: #121212;
+// === Backgrounds (Фони) ===
+$bg-primary: #121212;         // Основний фон сторінки (самий темний)
+$bg-secondary: #1a1a1c;       // Фон карток, віджетів, секцій
+$bg-tertiary: #242424;        // Фон внутрішніх елементів (поля вводу, дрібні блоки)
 
-$bg-secondary: #1a1a1c;
+// === Text (Текст) ===
+$text-primary: #ffffff;       // Головний текст (заголовки)
+$text-secondary: #b3b3b3;     // Другорядний текст (параграфи, описи)
+$text-muted: #7a7a7a;         // Неактивний текст або підписи (caption)
 
-$bg-tertiary: #242424;
+// === Accents (Акценти - Spotify Style) ===
+$accent-primary: #1db954;          // Фірмовий зелений
+$accent-primary-hover: #1ed760;    // Зелений при наведенні
+$accent-secondary: #ffcc00;        // Золотистий (для іконок, зірок або важливих лейблів)
+$accent-secondary-hover: #e6b800;  // Темно-золотистий
 
-$text-primary: #ffffff;
+// === Statuses (Статуси) ===
+$success: #34c759;            // Позитивні дії
+$danger: #ff3b30;             // Помилки або видалення
+$warning: #ffcc00;            // Попередження
+$info: #00d4ff;               // Інформаційні повідомлення
 
-$text-secondary: #b3b3b3;
-
-$text-muted: #7a7a7a;
-
-$accent-primary: #1db954;
-
-$accent-primary-hover: #1ed760;
-
-$accent-secondary: #ffcc00;
-
-$accent-secondary-hover: #e6b800;
-
-$success: #34c759;
-
-$danger: #ff3b30;
-
-$warning: #ffcc00;
-
-$info: #00d4ff;
-
-$border: #2a2a2a;
-
-$surface-elevated: #181818;
-
-$surface-hover: #2a2a2a;
+// === Borders & Surfaces (Межі та поверхні) ===
+$border: #2a2a2a;             // Колір тонких ліній та рамок
+$surface-elevated: #181818;   // "Підняті" елементи над фоном (картки з тінню)
+$surface-hover: #2a2a2a;      // Колір фону при наведенні на рядки або кнопки

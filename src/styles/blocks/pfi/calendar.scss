@@ -1,0 +1,70 @@
+@use "../../utils/variables/variables" as *;
+
+section {
+  background-color: $bg-secondary;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+
+  header {
+    margin-bottom: 20px;
+    h2 {
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      margin: 0;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    background-color: $bg-tertiary;
+    border: 1px solid $border;
+    color: $text-primary;
+
+    th,
+    td {
+      width: 100px;
+      height: 60px;
+      text-align: center;
+      border: 1px solid $border;
+      font-size: 18px;
+    }
+
+    th {
+      background-color: $surface-hover;
+      color: $text-secondary;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    tbody {
+      // Перша колонка (номер тижня) - робимо її тьмяною
+      td:first-child {
+        background-color: $bg-primary;
+        color: $text-muted;
+        font-size: 14px;
+        font-style: italic;
+      }
+
+      // Неділя (2-й стовпець у таблиці, бо 1-й - це No.)
+      td:nth-child(2) {
+        color: $accent-primary; // Зелений за умовою вихідних
+      }
+
+      // Субота (8-й стовпець)
+      td:nth-child(8) {
+        color: $accent-primary; // Зелений
+      }
+
+      tr:hover {
+        background-color: rgba($accent-primary, 0.05);
+      }
+    }
+  }
+}

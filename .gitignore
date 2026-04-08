@@ -146,3 +146,10 @@ dist/
 coverage/
 dist/
 src/styles/images/page-background.png
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

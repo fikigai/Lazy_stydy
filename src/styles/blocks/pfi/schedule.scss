@@ -1,0 +1,103 @@
+@use "../../utils/variables/variables" as *;
+
+.schedule-page {
+  background-color: $bg-primary;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Segoe UI", Roboto, sans-serif;
+
+  .main-title {
+    color: $text-primary;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+
+  .week-block {
+    margin-bottom: 60px;
+
+    .week-name {
+      color: $accent-primary;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      padding-left: 10px;
+      border-left: 4px solid $accent-primary;
+    }
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid $border;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $bg-secondary;
+    table-layout: fixed;
+    min-width: 800px;
+
+    th,
+    td {
+      border: 1px solid $border;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: $bg-tertiary;
+      color: $text-primary;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    .time-col {
+      background-color: $bg-tertiary;
+      color: $text-secondary;
+      width: 100px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .pair {
+      color: $text-primary;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+
+      small {
+        display: block;
+        color: $text-muted;
+        font-weight: 400;
+        margin-top: 5px;
+        line-height: 1.2;
+      }
+
+      &.lecture {
+        background-color: rgba($accent-primary, 0.1);
+        border-bottom: 2px solid $accent-primary;
+      }
+      &.lab {
+        background-color: rgba($info, 0.1);
+        border-bottom: 2px solid $info;
+      }
+      &.practice {
+        background-color: rgba($accent-secondary, 0.1);
+        border-bottom: 2px solid $accent-secondary;
+      }
+
+      &:hover {
+        background-color: $surface-hover;
+      }
+    }
+
+    .empty {
+      background-color: rgba($bg-primary, 0.3);
+    }
+  }
+}
